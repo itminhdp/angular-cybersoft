@@ -1,0 +1,20 @@
+<h1>Register Form</h1>
+
+<div class="form-group">
+	<label for="">Email</label>
+	<input type="text" class="form-control" [(ngModel)]="email">
+</div>
+
+<div class="form-group">
+	<label for="">Fullname</label>
+	<input type="text" class="form-control" #fullNameRef />
+</div>
+
+<button class="btn btn-success" (click)="fullName = fullNameRef.value">Submit</button>
+
+<p>
+	Email: {{email}}
+</p>
+<p>
+	FullName: {{fullName}}
+</p>

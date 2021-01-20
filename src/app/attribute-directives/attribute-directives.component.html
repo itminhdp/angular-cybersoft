@@ -1,0 +1,32 @@
+<!-- ngClass -->
+<!-- [class]="{'Tên-class': điều kiện}" -->
+<!-- điều kiện: true => class được sinh ra -->
+<p class="text-center" [class]="{
+	'bg-primary': active, 
+	'text-white': active,
+	'bg-secondary': !active
+}">
+	Cybersoft
+</p>
+<button (click)="active = !active">Toggle</button>
+
+<!-- ngStyle -->
+<!-- [class]="{'thuộc-tính-css': giá trị}" -->
+<p style="text-align: center" [style]="{
+	'background-color': color	
+}">
+	Angular
+</p>
+<div style="height:500px; background-repeat: no-repeat" [style]="{
+	'background-image': 'url(' + imgUrl + ')'
+}">
+</div>
+
+<!-- ngNonbindable -->
+<p ngNonBindable>
+	{{message}}
+</p>
+
+<!-- Binding chuỗi html ra giao diện  -->
+<div [innerHTML]="result">
+</div>

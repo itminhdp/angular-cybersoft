@@ -1,0 +1,31 @@
+<!-- Interpolation -->
+<p>
+	{{message}}
+</p>
+
+<p>
+	Name: {{student.name}} -
+	Age: {{student.age}}
+</p>
+
+<!-- Property binding -->
+<input type="text" [value]="username" [disabled]="!active">
+<!-- Event binding  -->
+<p>
+	{{username}}
+</p>
+<input type="text" [value]="username" #usernameRef>
+<!-- Sự kiện để trong ngoặc tròn -->
+<button (click)="changeUserName(usernameRef)">Change</button>
+
+<p>
+	{{email}}
+</p>
+<input type="text" [value]="email" (change)="changeEmail($event)">
+<input type="text" [value]="email" (input)="changeEmail($event)">
+
+<!-- Two-way binding -->
+<p>
+	{{address}}
+</p>
+<input type="text" [(ngModel)]="address">

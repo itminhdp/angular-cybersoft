@@ -1,0 +1,65 @@
+<!-- ngIf -->
+<p *ngIf="isActive">Hello CyberSoft</p>
+<button (click)="isActive = !isActive">Toggle</button>
+
+<!-- view khi da login -->
+<div *ngIf="isLogin; else loginTemplate">
+	<h1>Hello Minh</h1>
+	<button class="btn btn-danger" (click)="isLogin = false">Logout</button>
+</div>
+<!-- view khi chua login -->
+<!-- <div *ngIf="!isLogin">
+	<h1>Cybersoft</h1>
+	<button class="btn btn-success" (click)="isLogin = true">Login</button>
+</div> -->
+
+<!-- ng-template: Mặc định những gì nằm bên trong ng-template sẽ không được
+render ra giao diện và nó chỉ được render ra giao diện khi được gọi tới tham,
+chiếu của ng-template-->
+<ng-template #loginTemplate>
+	<div>
+		<h1>Cybersoft</h1>
+		<button class="btn btn-success" (click)="isLogin = true">Login</button>
+	</div>
+</ng-template>
+
+<!-- ngSwitch -->
+<div [ngSwitch]="color">
+	<p *ngSwitchCase="'primary'" class="bg-primary">Primary</p>
+	<p *ngSwitchCase="'secondary'" class="bg-secondary">secondary</p>
+	<p *ngSwitchCase="'success'" class="bg-success">success</p>
+	<p *ngSwitchCase="'danger'" class="bg-danger">danger</p>
+	<p *ngSwitchCase="'warning'" class="bg-warning">warning</p>
+	<p *ngSwitchDefault>Default</p>
+</div>
+<select [(ngModel)]="color">
+	<option value="">Default</option>
+	<option value="primary">primary</option>
+	<option value="secondary">secondary</option>
+	<option value="success">success</option>
+	<option value="danger">danger</option>
+	<option value="warning">warning</option>
+</select>
+
+<!-- Không được sử dụng 2 structural trên cùng 1 tag -->
+<!-- Thẻ này sẽ không được render ra giao diện mà chỉ render nội dung bên 
+trong thẻ -->
+<ng-container *ngIf="movieList">
+	<!-- ngFor -->
+	<p *ngFor="let movie of movieList; let idx = index; count as total">
+		{{idx + 1}}/{{total}} - {{movie.name}} - {{movie.price}}
+	</p>
+</ng-container>
+
+<!-- ngTemplateOutlet: Kết hợp ng-template và ng-container để tái sử dụng1 đoạn 
+giao diện bên trong component -->
+<ng-template #templateAlert>
+	<div class="alert alert-danger">
+		<span>Something went wrong</span>
+	</div>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="templateAlert"></ng-container>
+<ng-container *ngTemplateOutlet="templateAlert"></ng-container>
+<ng-container *ngTemplateOutlet="templateAlert"></ng-container>
+<ng-container *ngTemplateOutlet="templateAlert"></ng-container>
